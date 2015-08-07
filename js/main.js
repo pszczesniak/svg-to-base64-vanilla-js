@@ -6,7 +6,9 @@
             canvas = document.createElement('canvas'),
             body = document.getElementsByTagName('body')[0],
             canvasTmp,
-            svg_xml;
+            svg_xml,
+            ctx,
+            img;
 
         // if our "svg" doesn't have 'xmlns' attribute we must add it
         //svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -17,15 +19,15 @@
 
         body.appendChild(canvas);
         canvasTmp = document.getElementById('canvas');
-        
+
         /* Time to play ;) */
 
         // https://developer.mozilla.org/en/XMLSerializer
         svg_xml = (new XMLSerializer()).serializeToString(svg);
-        var ctx = canvasTmp.getContext('2d');
+        ctx = canvasTmp.getContext('2d');
 
         // JavaScript (HTML) image
-        var img = new Image();
+        img = new Image();
 
         img.onload = function() {
             ctx.drawImage(img, 0, 0);
